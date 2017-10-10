@@ -1,7 +1,7 @@
 package com.example.kadeem.recyclertest;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -28,10 +28,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-//        mDataset = new ArrayList<>();
-//        for (int i = 0; i < 50; i++) {    //This loop may be the determining factor in making the number of views in the future. Maybe helping to make a certain number of views based on a getNumberOfItems pulled from server
-//            mDataset.add(new Dataclass("item" + i));
-//        }
+        mDataset = new ArrayList<>();
+        for (int i = 0; i < 15; i++) {    //This loop may be the determining factor in making the number of views in the future. Maybe helping to make a certain number of views based on a getNumberOfItems pulled from server
+            mDataset.add(new Dataclass("http://freebiesland.my/wp-content/uploads/2015/01/Burger-King-e1422629416581.jpg"));
+        }
 
 
         //Obtain  link to recycler layout object
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Specify Adapter and pass dataset
-        mAdapter =  new MainAdapter(imgUrlList);
+        mAdapter = new MainAdapter(mDataset);
         mRecyclerView.setAdapter(mAdapter);
 
 

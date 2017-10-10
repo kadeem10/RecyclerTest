@@ -6,10 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Callback;
 
 import java.util.ArrayList;
 
@@ -19,12 +17,14 @@ import java.util.ArrayList;
 
 class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
+
     private ArrayList<Dataclass> mDataset;
-    private String[] urlList;
+
     private Context mContext;
 
-    public MainAdapter(String[] urlList) {
-        this.urlList = urlList;
+
+    public MainAdapter(ArrayList<Dataclass> mDataset) {
+        this.mDataset = mDataset;
     }
 
     @Override
@@ -42,18 +42,20 @@ class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        ////Load image with picasso and set image to GONE when it has finished loading
+        //Load image with picasso and set image to GONE when it has finished loading
 
+        Dataclass mCurrData = mDataset.get(position);
 
         Picasso.with(mContext)
-                .load(NetworkUtils.createURI(urlList[0]))   //Not working as yet
+                .load(NetworkUtils.createURI(mCurrData.getDataName()))
                 .placeholder(R.drawable.bkp)
                 .into(holder.mImage);
+
     }
 
     @Override
     public int getItemCount() {
-        return urlList.length;
+        return mDataset.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
